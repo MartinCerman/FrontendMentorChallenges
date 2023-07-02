@@ -151,6 +151,27 @@
     .order-button:hover {
       background-color: rgb(26, 64, 49);
     }
+
+    @media screen and (min-width: 376px) {
+      .product-card {
+        height: 450px;
+        width: 600px;
+      }
+
+      .product-card>img {
+        width: 300px;
+        position: absolute;
+        content: url(images/image-product-desktop.jpg);
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.6rem;
+      }
+
+      .product-description, .product-order {
+        margin-left: calc(300px + 2rem);
+        margin-right: 2rem;
+      }
+
+    }
   </style>
 </head>
 
