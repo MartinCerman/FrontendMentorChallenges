@@ -154,12 +154,14 @@
 
     @media screen and (min-width: 376px) {
       .product-card {
+        position: relative;
         height: 450px;
         width: 600px;
+        translate: calc((100vw - 550px) / 2);
       }
 
       .product-card>img {
-        width: 300px;
+        width: 50%;
         position: absolute;
         content: url(images/image-product-desktop.jpg);
         border-top-right-radius: 0;
@@ -171,6 +173,12 @@
         margin-right: 2rem;
       }
 
+    }
+
+    @media screen and (min-width: 600px) {
+      .product-card {
+        translate: 0;
+      }
     }
   </style>
 </head>
