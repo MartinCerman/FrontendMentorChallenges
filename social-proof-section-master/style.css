@@ -1,3 +1,10 @@
+:root {
+  --Very-Dark-Magenta: hsl(300, 43%, 22%);
+  --Soft-Pink: hsl(333, 80%, 67%);
+  --Dark-Grayish-Magenta: hsl(303, 10%, 53%);
+  --Light-Grayish-Magenta: hsl(300, 24%, 96%);
+}
+
 @font-face {
   font-family: 'League Spartan';
   src: url(fonts/LeagueSpartan-VariableFont_wght.ttf);
@@ -9,10 +16,24 @@ body {
   font-family: 'League Spartan';
 }
 
+.card {
+  min-width: 330px;
+  max-width: 330px;
+  height: 250px;
+  background-color: var(--Very-Dark-Magenta);
+
+}
+
+.customer-reviews img {
+  width: 40px;
+}
+
+.ver-buyer {
+  color: var(--Dark-Grayish-Magenta);
+  font-weight: 400;
+}
+
 .attribution {
-  position: sticky;
-  bottom: 0;
-  width: 100vw;
   font-size: 11px;
   text-align: center;
 }
