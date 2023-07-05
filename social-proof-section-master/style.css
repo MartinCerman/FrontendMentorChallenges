@@ -16,6 +16,37 @@ body {
   font-family: 'League Spartan';
 }
 
+main {
+  max-width: 1200px;
+}
+
+h1 {
+  color: var(--Very-Dark-Magenta);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: normal;
+}
+
+@media screen and (min-width: 900px) {
+  h1 {
+    font-size: 3.7rem;
+  }
+}
+
+h1+* {
+  color: var(--Dark-Grayish-Magenta);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.press-reviews>* {
+  background-color: var(--Light-Grayish-Magenta);
+  color: var(--Very-Dark-Magenta);
+  font-size: larger;
+  font-weight: 700;
+  min-width: 330px;
+}
+
 .card {
   min-width: 330px;
   max-width: 330px;
