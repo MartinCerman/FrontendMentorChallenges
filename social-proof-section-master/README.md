@@ -4,7 +4,7 @@ This is a solution to the [Social proof section coding challenge on Frontend Men
 
 ## Overview
 
-A simple responsive page, used as a Bootstrap practice project.
+A simple responsive page, used as a Bootstrap practice project. I've decided it is good enough already because it ended up being quite a mess when it comes to Bootstrap classes. It is still far from perfect but trying to be pixel perfect here would require a lot of additional work I'm not willing to invest. 
 
 ### Built with
 
