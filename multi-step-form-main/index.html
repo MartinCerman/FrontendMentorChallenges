@@ -30,44 +30,44 @@
     <section class="sidebar-container">
 
       <div>
-        <p class="tab-number">1</p>
+        <p class="active-tab-number">1</p>
         <p>Step 1</p>
         <p>Your info</p>
       </div>
       <div>
-        <p class="tab-number">2</p>
+        <p>2</p>
         <p>Step 2</p>
         <p>Select plan</p>
       </div>
       <div>
-        <p class="tab-number">3</p>
+        <p>3</p>
         <p>Step 3</p>
         <p>Add-ons</p>
       </div>
       <div>
-        <p class="tab-number">4</p>
+        <p>4</p>
         <p>Step 4</p>
         <p>Summary</p>
       </div>
     </section>
     <!-- Sidebar end -->
     <!-- Step 1 start -->
-    <fieldset>
+    <fieldset class="active-tab">
       <div>
         <h1>Personal info</h1>
         <p>Please provide your name, email address, and phone number.</p>
       </div>
-      <div class="inputs">
-        <label>
-          Name
+      <div class="user-data">
+        <label id="user-name">
+          Name<span></span>
           <input type="text" name="name" placeholder="e.g. Stephen King">
         </label>
-        <label>
-          Email Address
+        <label id="email">
+          Email Address<span></span>
           <input type="text" name="email" placeholder="e.g. stephenking@lorem.com">
         </label>
-        <label>
-          Phone Number
+        <label id="tel">
+          Phone Number<span></span>
           <input type="tel" name="tel" placeholder="e.g. +1 234 567 890">
         </label>
       </div>
@@ -82,30 +82,34 @@
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
       </div>
-      <div>
-        <label>
-        <p>Arcade</p>
-        <p>$9/mo</p>
-        <input type="radio" name="plan-selection" value="arcade">
-      </label>
-      <label>
-        <p>Advanced</p>
-        <p>$12/mo</p>
-        <input type="radio" name="plan-selection" value="advanced">
-      </label>
-      <label>
-        <p>Pro</p>
-        <p>$15/mo</p>
-        <input type="radio" name="plan-selection" value="pro">
-      </label>
-      <label>
-        <span>Monthly</span>
-        <input type="checkbox" name="billing-period">
-        <span>Yearly</span>
-      </label>
-    </div>
+      <div class="plan-selection">
+        <input type="radio" name="plan-selection" id="arcade" value="arcade" checked>
+        <label for="arcade">
+          <img src="assets/images/icon-arcade.svg">
+          <p>Arcade</p>
+          <p>$9/mo</p>
+        </label>
+        <input type="radio" name="plan-selection" id="advanced" value="advanced">
+        <label for="advanced">
+          <img src="assets/images/icon-advanced.svg">
+          <p>Advanced</p>
+          <p>$12/mo</p>
+        </label>
+        <input type="radio" name="plan-selection" id="pro" value="pro">
+        <label for="pro">
+          <img src="assets/images/icon-pro.svg" alt="">
+          <p>Pro</p>
+          <p>$15/mo</p>
+        </label>
+        <div class="billing-period-selector">
+          <input type="checkbox" id="billing-period" />
+          <label for="billing-period"></label>
+          <label for="billing-period">Monthly</label>
+          <label for="billing-period">Yearly</label>
+        </div>
+      </div>
       <div class="buttons">
-        <button>Go Back</button>
+        <button class="go-back">Go Back</button>
         <button class="next-step">Next Step</button>
       </div>
     </fieldset>
@@ -116,66 +120,85 @@
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
       </div>
-      <div>
+      <div class="add-ons-container">
         <label>
-          <input type="checkbox" name="online-service">
-          <p>Online service<br />
-            Access to multiplayer games</p>
+          <input type="checkbox" name="online-service" id="online-service">
+          <div>
+            <h2>Online service</h2>
+            <p>Access to multiplayer games</p>
+          </div>
           <p>+$1/mo</p>
         </label>
         <label>
           <input type="checkbox" name="larger-storage">
-          <p>Larger storage<br />
-            Extra 1TB of cloud save</p>
+          <div>
+            <h2>Larger storage</h2>
+            <p>Extra 1TB of cloud save</p>
+          </div>
           <p>+$2/mo</p>
         </label>
         <label>
           <input type="checkbox" name="customizable-profile">
-          <p>Customizable Profile<br />
-            Custom theme on your profile</p>
+          <div>
+            <h2>Customizable Profile</h2>
+            <p>Custom theme on your profile</p>
+          </div>
           <p>+$2/mo</p>
         </label>
       </div>
       <div class="buttons">
-        <button>Go Back</button>
+        <button class="go-back">Go Back</button>
         <button class="next-step">Next Step</button>
       </div>
     </fieldset>
     <!-- Step 3 end -->
     <!-- Step 4 start -->
-    <fieldset class="active-tab">
+    <fieldset>
       <div>
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
       </div>
       <!-- Dynamically add subscription and add-on selections here -->
-      <div>
+      <div class="summary-table">
+        <div>
+          <div>
+            <h2>Arcade (Monthly)</h2>
+            <p>Change</p>
+          </div>
+          <p>+$9/mo</p>
+        </div>
+        <hr>
+        <div>
+          <p>Online service</p>
+          <p>+$1/mo</p>
+        </div>
+        <div>
+          <p>Larger storage</p>
+          <p>+$2/mo</p>
+        </div>
+      </div>
+      <div class="total">
         <p>Total (<span>per</span>)</p>
-        <p></p>
+        <p>+$12/mo</p>
       </div>
       <div class="buttons">
-        <button>Go Back</button>
+        <button class="go-back">Go Back</button>
         <button type="submit">Confirm</button>
       </div>
     </fieldset>
     <!-- Step 4 end -->
     <!-- Step 5 start -->
-    <fieldset>
-      <legend>
+    <fieldset class="thank-you-tab">
+      <img src="assets/images/icon-thank-you.svg" alt="">
+      <div>
         <h1>Thank you!</h1>
-      </legend>
+      </div>
       <p>Thanks for confirming your subscription! We hope you have fun
         using our platform. If you ever need support, please feel free
         to email us at support@loremgaming.com.</p>
     </fieldset>
     <!-- Step 5 end -->
   </form>
-
-
-
-
-
-
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
