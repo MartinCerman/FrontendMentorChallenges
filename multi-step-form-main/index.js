@@ -4,15 +4,19 @@ const formTabContainers = document.querySelectorAll("fieldset");
 const sidebarIcons = document.querySelectorAll(
   ".sidebar-container > div > p:first-child"
 );
+const form = document.querySelector("form");
 
 // Changes current active tab. Positive changeBy goes forward by n steps,
 // negative changeBy goes back by n steps.
 const changeTabs = (currentTabIndex, changeBy = 1) => {
   formTabContainers[currentTabIndex].classList.remove("active-tab");
   formTabContainers[currentTabIndex + changeBy].classList.add("active-tab");
-
-  sidebarIcons[currentTabIndex].classList.remove("active-tab-number");
-  sidebarIcons[currentTabIndex + changeBy].classList.add("active-tab-number");
+  console.log(currentTabIndex);
+  // Prevents changing sidebar icon for second to last tab to last tab transition.
+  if (currentTabIndex !== formTabContainers.length - 2) {
+    sidebarIcons[currentTabIndex].classList.remove("active-tab-number");
+    sidebarIcons[currentTabIndex + changeBy].classList.add("active-tab-number");
+  }
 };
 
 const emailCheck = (email) => {
@@ -58,7 +62,7 @@ const handleNextStep2 = () => {
   e.preventDefault();
 };
 
-// Attaches events to Next Step buttons, validate data where needed.
+// Events on Next Step buttons, validates data for text fields.
 nextStepButtons[0].addEventListener("click", (e) => {
   e.preventDefault();
   if (personalDataValid()) {
@@ -74,10 +78,16 @@ nextStepButtons[2].addEventListener("click", (e) => {
   changeTabs(2);
 });
 
-// Attaches events to Go Back buttons, first Go Back is on tab at index 1.
+// Events on Go Back buttons, first Go Back is on tab at index 1.
 for (let i = 0; i < goBackButtons.length; i++) {
   goBackButtons[i].addEventListener("click", (e) => {
     e.preventDefault();
     changeTabs(i + 1, -1);
   });
 }
+
+// Form submit event.
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  changeTabs(3);
+});
