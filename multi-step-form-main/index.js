@@ -5,13 +5,14 @@ const sidebarIcons = document.querySelectorAll(
   ".sidebar-container > div > p:first-child"
 );
 
-// Changes active tab and sidebar visuals. Direction is default for next tab or -1 for step back.
-const changeTabs = (currentTabIndex, direction = 1) => {
+// Changes current active tab. Positive changeBy goes forward by n steps,
+// negative changeBy goes back by n steps.
+const changeTabs = (currentTabIndex, changeBy = 1) => {
   formTabContainers[currentTabIndex].classList.remove("active-tab");
-  formTabContainers[currentTabIndex + direction].classList.add("active-tab");
+  formTabContainers[currentTabIndex + changeBy].classList.add("active-tab");
 
   sidebarIcons[currentTabIndex].classList.remove("active-tab-number");
-  sidebarIcons[currentTabIndex + direction].classList.add("active-tab-number");
+  sidebarIcons[currentTabIndex + changeBy].classList.add("active-tab-number");
 };
 
 const emailCheck = (email) => {
@@ -57,7 +58,7 @@ const handleNextStep2 = () => {
   e.preventDefault();
 };
 
-// Attach events to Next Step buttons, validate data where needed.
+// Attaches events to Next Step buttons, validate data where needed.
 nextStepButtons[0].addEventListener("click", (e) => {
   e.preventDefault();
   if (personalDataValid()) {
@@ -72,3 +73,11 @@ nextStepButtons[2].addEventListener("click", (e) => {
   e.preventDefault();
   changeTabs(2);
 });
+
+// Attaches events to Go Back buttons, first Go Back is on tab at index 1.
+for (let i = 0; i < goBackButtons.length; i++) {
+  goBackButtons[i].addEventListener("click", (e) => {
+    e.preventDefault();
+    changeTabs(i + 1, -1);
+  });
+}
