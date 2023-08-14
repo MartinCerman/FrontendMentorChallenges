@@ -1,20 +1,18 @@
-// Next Step buttons.
 const nextStepButtons = document.querySelectorAll(".next-step");
-
-// Form tab containers.
-const formTabs = document.querySelectorAll("fieldset");
-
-// Sidebar icons.
-const sideIcons = document.querySelectorAll(".sidebar-container > div > p:first-child")
+const goBackButtons = document.querySelectorAll(".go-back");
+const formTabContainers = document.querySelectorAll("fieldset");
+const sidebarIcons = document.querySelectorAll(
+  ".sidebar-container > div > p:first-child"
+);
 
 // Changes active tab and sidebar visuals. Direction is default for next tab or -1 for step back.
-const changeTabs = (currentTabIndex, direction = 1)=>{
-    formTabs[currentTabIndex].classList.remove("active-tab");
-    formTabs[currentTabIndex + direction].classList.add("active-tab");
+const changeTabs = (currentTabIndex, direction = 1) => {
+  formTabContainers[currentTabIndex].classList.remove("active-tab");
+  formTabContainers[currentTabIndex + direction].classList.add("active-tab");
 
-    sideIcons[currentTabIndex].classList.remove("active-tab-number");
-    sideIcons[currentTabIndex + direction].classList.add("active-tab-number");
-}
+  sidebarIcons[currentTabIndex].classList.remove("active-tab-number");
+  sidebarIcons[currentTabIndex + direction].classList.add("active-tab-number");
+};
 
 const emailCheck = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -24,16 +22,13 @@ const phoneNumberCheck = (tel) => {
   return /^\+(\s)?\d{1,3}(\s)?\d{3}(\s)?\d{3}(\s)?\d{3}$/.test(tel);
 };
 
-// Tab 1 Next Step button on click event handler.
-// Checks if all Personal data are filled, adds .missing-input to according labels
-// and prevents next step if not.
-const handleNextStep1 = (e) => {
-  e.preventDefault();
-
+// Checks if all Personal data are filled and returns true/false, adds .missing-input to according labels
+// if not valid.
+const personalDataValid = (e) => {
   const nameSection = document.querySelector("#user-name");
   const emailSection = document.querySelector("#email");
   const phoneNumberSection = document.querySelector("#tel");
-  let preventNextStep = false;
+  let isDataValid = true;
 
   // Remove any error message classes that could already be set.
   nameSection.classList.remove("missing-input");
@@ -43,21 +38,37 @@ const handleNextStep1 = (e) => {
   // Check inputs and apply error message class if it doesn't pass.
   if (!document.querySelector("input[name='name']").value) {
     nameSection.classList.add("missing-input");
-    preventNextStep = true;
+    isDataValid = false;
   }
   if (!emailCheck(document.querySelector("input[name='email']").value)) {
     emailSection.classList.add("missing-input");
-    preventNextStep = true;
+    isDataValid = false;
   }
   if (!phoneNumberCheck(document.querySelector("input[name='tel']").value)) {
     phoneNumberSection.classList.add("missing-input");
-    preventNextStep = true;
+    isDataValid = false;
   }
 
-  // Remove .active-tab from the current tab and add it to the next one.
-  if(!preventNextStep){
-    changeTabs(0)
-  }
+  return isDataValid;
 };
 
-nextStepButtons[0].addEventListener("click", handleNextStep1);
+// Tab 2 Next Step button on click event handler.
+const handleNextStep2 = () => {
+  e.preventDefault();
+};
+
+// Attach events to Next Step buttons, validate data where needed.
+nextStepButtons[0].addEventListener("click", (e) => {
+  e.preventDefault();
+  if (personalDataValid()) {
+    changeTabs(0);
+  }
+});
+nextStepButtons[1].addEventListener("click", (e) => {
+  e.preventDefault();
+  changeTabs(1);
+});
+nextStepButtons[2].addEventListener("click", (e) => {
+  e.preventDefault();
+  changeTabs(2);
+});
