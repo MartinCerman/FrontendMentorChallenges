@@ -187,7 +187,7 @@ fieldset p {
   row-gap: 2rem;
 }
 
-.plan-selection > input + label {
+.plan-selection > label {
   width: 138px;
   height: 160px;
   padding: 1rem;
@@ -199,7 +199,11 @@ fieldset p {
   align-items: flex-start;
 }
 
-.plan-selection input + label > img {
+.plan-selection > label:hover {
+  border: solid var(--purplish-blue) 1px;
+}
+
+.plan-selection > label > img {
   margin-bottom: auto;
 }
 
@@ -237,6 +241,7 @@ fieldset p {
 
 .billing-period-selector > label {
   font-family: Ubuntu-Medium;
+  cursor: pointer;
 }
 
 .billing-period-selector input + label {
@@ -305,16 +310,27 @@ fieldset p {
   gap: 1rem;
   padding: 1rem;
   height: 80px;
-  border: solid var(--marine-blue) 1px;
+  border: solid var(--light-gray) 1px;
   border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.add-ons-container > label:hover {
+  border-color: var(--purplish-blue);
+}
+
+label.highlight {
+  border-color: var(--purplish-blue);
+  background-color: var(--alabaster);
 }
 
 .add-ons-container > label > input {
   width: 1.3rem;
   height: 1.3rem;
   appearance: none;
-  border: solid var(--cool-gray) 1px;
+  border: solid var(--light-gray) 1px;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .add-ons-container > label > input:checked {
@@ -344,10 +360,21 @@ fieldset p {
 .summary-table > div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .summary-table h2 {
   margin-bottom: 0.3rem;
+  color: var(--marine-blue);
+}
+
+#change-plan-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#change-plan-link:hover {
+  color: var(--purplish-blue);
 }
 
 .summary-table hr {
@@ -401,9 +428,13 @@ fieldset p {
 button.go-back {
   border: none;
   background-color: inherit;
-  color: var(--marine-blue);
+  color: var(--cool-gray);
   font-family: Ubuntu-Medium, sans-serif;
   cursor: pointer;
+}
+
+button.go-back:hover {
+  color: var(--marine-blue);
 }
 
 button.next-step {
@@ -421,12 +452,16 @@ button.next-step:hover {
 }
 
 button[type="submit"] {
-  background-color: var(--pastel-blue);
+  background-color: var(--purplish-blue);
   border: none;
   border-radius: 0.5rem;
   padding: 0.9rem 2rem;
   color: var(--alabaster);
   font-family: Ubuntu-Medium, sans-serif;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.6;
 }
 
 /* Buttons End */

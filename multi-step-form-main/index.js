@@ -10,12 +10,24 @@ const addOnsPrices = {
 
 const nextStepButtons = document.querySelectorAll(".next-step");
 const goBackButtons = document.querySelectorAll(".go-back");
-const changePlanLink = document.querySelector("#change-plan-link");
 const formTabContainers = document.querySelectorAll("fieldset");
 const sidebarIcons = document.querySelectorAll(
   ".sidebar-container > div > p:first-child"
 );
+const changePlanLink = document.querySelector("#change-plan-link");
+const addOns = document.querySelectorAll(".add-ons-container input");
 const form = document.querySelector("form");
+
+// Change add-ons label border color and background color on change.
+addOns.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    if (input.checked) {
+      input.parentElement.classList.add("highlight");
+    } else {
+      input.parentElement.classList.remove("highlight");
+    }
+  });
+});
 
 // Changes current active tab. Positive changeBy goes forward by n steps,
 // negative changeBy goes back by n steps.
@@ -115,7 +127,7 @@ const summaryPlan = document.querySelector("#summary-plan");
 const summaryPeriod = document.querySelector("#summary-period");
 const summaryPlanPrice = document.querySelector("#summary-plan-price");
 const summaryTotal = document.querySelector("#total-cost");
-const addOns = document.querySelectorAll(".add-ons-container input");
+const summaryPaymentFrequency = document.querySelector("#payment-frequency");
 
 // Format price to selected period and currency.
 const formatPrice = (a) => {
@@ -190,11 +202,13 @@ const updateData = () => {
 
   summaryPlan.textContent = planName;
   summaryPlanPrice.textContent = formatPrice(planMonthly);
-  summaryTotal.textContent = formatPrice(planMonthly + addOnsMonthly);
+  summaryTotal.textContent = "+" + formatPrice(planMonthly + addOnsMonthly);
 
   if (form["billing-period"].checked) {
     summaryPeriod.textContent = "Yearly";
+    summaryPaymentFrequency.textContent = "year";
   } else {
     summaryPeriod.textContent = "Monthly";
+    summaryPaymentFrequency.textContent = "month";
   }
 };
