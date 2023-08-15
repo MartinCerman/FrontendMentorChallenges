@@ -1,5 +1,16 @@
+const arcadePlanMonthly = 9;
+const advancedPlanMonthly = 12;
+const proPlanMonthly = 15;
+const yearlyPeriodMultiplier = 10;
+const addOnsPrices = {
+  "Online service": 1,
+  "Larger storage": 2,
+  "Customizable profile": 2,
+};
+
 const nextStepButtons = document.querySelectorAll(".next-step");
 const goBackButtons = document.querySelectorAll(".go-back");
+const changePlanLink = document.querySelector("#change-plan-link");
 const formTabContainers = document.querySelectorAll("fieldset");
 const sidebarIcons = document.querySelectorAll(
   ".sidebar-container > div > p:first-child"
@@ -57,24 +68,24 @@ const personalDataValid = (e) => {
   return isDataValid;
 };
 
-// Tab 2 Next Step button on click event handler.
-const handleNextStep2 = () => {
-  e.preventDefault();
-};
-
-// Events on Next Step buttons, validates data for text fields.
+// First Next Step button, validates data for text fields.
 nextStepButtons[0].addEventListener("click", (e) => {
   e.preventDefault();
   if (personalDataValid()) {
     changeTabs(0);
   }
 });
+
+// Second Next Step button.
 nextStepButtons[1].addEventListener("click", (e) => {
   e.preventDefault();
   changeTabs(1);
 });
+
+// Third Next Step button, updates summary data.
 nextStepButtons[2].addEventListener("click", (e) => {
   e.preventDefault();
+  updateData();
   changeTabs(2);
 });
 
@@ -86,8 +97,104 @@ for (let i = 0; i < goBackButtons.length; i++) {
   });
 }
 
+// Change plan link event.
+changePlanLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeTabs(formTabContainers.length - 2, -2);
+});
+
 // Form submit event.
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   changeTabs(3);
 });
+
+// Summary tab items.
+const summaryTable = document.querySelector(".summary-table");
+const summaryPlan = document.querySelector("#summary-plan");
+const summaryPeriod = document.querySelector("#summary-period");
+const summaryPlanPrice = document.querySelector("#summary-plan-price");
+const summaryTotal = document.querySelector("#total-cost");
+const addOns = document.querySelectorAll(".add-ons-container input");
+
+// Format price to selected period and currency.
+const formatPrice = (a) => {
+  if (form["billing-period"].checked) {
+    a *= yearlyPeriodMultiplier;
+    a = `$${a}/yr`;
+  } else {
+    a = `$${a}/mo`;
+  }
+
+  return a;
+};
+
+// Returns plan monthly cost.
+const planPrice = (planName) => {
+  let planPrice = 0;
+
+  switch (planName) {
+    case "Arcade":
+      planPrice = arcadePlanMonthly;
+      break;
+    case "Advanced":
+      planPrice = advancedPlanMonthly;
+      break;
+    case "Pro":
+      planPrice = proPlanMonthly;
+      break;
+    default:
+      alert(`Error (planTotalPrice()). Missing case for plan: ${planName}.`);
+      break;
+  }
+
+  return planPrice;
+};
+
+// Creates Add Ons section and returns their monthly price.
+const constructAddOnsSummary = () => {
+  let total = 0;
+
+  addOns.forEach((item, i) => {
+    let container = document.querySelector(`#container${i}`);
+    if (container) {
+      container.remove();
+    }
+
+    if (item.checked) {
+      const itemContainer = document.createElement("div");
+      itemContainer.setAttribute("id", `container${i}`);
+      const addOnNameTag = document.createElement("p");
+      const addOnPriceTag = document.createElement("p");
+
+      let addOnTotal = addOnsPrices[item.value];
+      total += addOnTotal;
+
+      addOnNameTag.textContent = item.value;
+      addOnPriceTag.textContent = "+" + formatPrice(addOnTotal);
+
+      itemContainer.appendChild(addOnNameTag);
+      itemContainer.appendChild(addOnPriceTag);
+      summaryTable.appendChild(itemContainer);
+    }
+  });
+
+  return total;
+};
+
+// Updates elements in summary tab.
+const updateData = () => {
+  const planName = form["plan-selection"].value;
+  const planMonthly = planPrice(planName);
+  const addOnsMonthly = constructAddOnsSummary();
+
+  summaryPlan.textContent = planName;
+  summaryPlanPrice.textContent = formatPrice(planMonthly);
+  summaryTotal.textContent = formatPrice(planMonthly + addOnsMonthly);
+
+  if (form["billing-period"].checked) {
+    summaryPeriod.textContent = "Yearly";
+  } else {
+    summaryPeriod.textContent = "Monthly";
+  }
+};

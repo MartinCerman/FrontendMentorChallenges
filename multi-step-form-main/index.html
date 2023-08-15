@@ -83,26 +83,26 @@
         <p>You have the option of monthly or yearly billing.</p>
       </div>
       <div class="plan-selection">
-        <input type="radio" name="plan-selection" id="arcade" value="arcade" checked>
+        <input type="radio" name="plan-selection" id="arcade" value="Arcade" checked>
         <label for="arcade">
           <img src="assets/images/icon-arcade.svg">
           <p>Arcade</p>
           <p>$9/mo</p>
         </label>
-        <input type="radio" name="plan-selection" id="advanced" value="advanced">
+        <input type="radio" name="plan-selection" id="advanced" value="Advanced">
         <label for="advanced">
           <img src="assets/images/icon-advanced.svg">
           <p>Advanced</p>
           <p>$12/mo</p>
         </label>
-        <input type="radio" name="plan-selection" id="pro" value="pro">
+        <input type="radio" name="plan-selection" id="pro" value="Pro">
         <label for="pro">
           <img src="assets/images/icon-pro.svg" alt="">
           <p>Pro</p>
           <p>$15/mo</p>
         </label>
         <div class="billing-period-selector">
-          <input type="checkbox" id="billing-period" />
+          <input type="checkbox" name="billing-period" id="billing-period" />
           <label for="billing-period"></label>
           <label for="billing-period">Monthly</label>
           <label for="billing-period">Yearly</label>
@@ -122,7 +122,7 @@
       </div>
       <div class="add-ons-container">
         <label>
-          <input type="checkbox" name="online-service" id="online-service">
+          <input type="checkbox" name="online-service" id="online-service" value="Online service">
           <div>
             <h2>Online service</h2>
             <p>Access to multiplayer games</p>
@@ -130,7 +130,7 @@
           <p>+$1/mo</p>
         </label>
         <label>
-          <input type="checkbox" name="larger-storage">
+          <input type="checkbox" name="larger-storage" value="Larger storage">
           <div>
             <h2>Larger storage</h2>
             <p>Extra 1TB of cloud save</p>
@@ -138,9 +138,9 @@
           <p>+$2/mo</p>
         </label>
         <label>
-          <input type="checkbox" name="customizable-profile">
+          <input type="checkbox" name="customizable-profile" value="Customizable profile">
           <div>
-            <h2>Customizable Profile</h2>
+            <h2>Customizable profile</h2>
             <p>Custom theme on your profile</p>
           </div>
           <p>+$2/mo</p>
@@ -162,24 +162,16 @@
       <div class="summary-table">
         <div>
           <div>
-            <h2>Arcade (Monthly)</h2>
-            <p>Change</p>
+            <h2><span id="summary-plan">Arcade</span> (<span id="summary-period">Monthly</span>)</h2>
+            <p><a href="#" id="change-plan-link">Change</a></p>
           </div>
-          <p>+$9/mo</p>
+          <p id="summary-plan-price">+$9/mo</p>
         </div>
         <hr>
-        <div>
-          <p>Online service</p>
-          <p>+$1/mo</p>
-        </div>
-        <div>
-          <p>Larger storage</p>
-          <p>+$2/mo</p>
-        </div>
       </div>
       <div class="total">
         <p>Total (<span>per</span>)</p>
-        <p>+$12/mo</p>
+        <p id="total-cost">+$12/mo</p>
       </div>
       <div class="buttons">
         <button class="go-back">Go Back</button>
