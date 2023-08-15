@@ -15,6 +15,8 @@
     .attribution {
       font-size: 11px;
       text-align: center;
+      position: absolute;
+      bottom: 0;
     }
 
     .attribution a {
@@ -86,23 +88,29 @@
         <input type="radio" name="plan-selection" id="arcade" value="Arcade" checked>
         <label for="arcade">
           <img src="assets/images/icon-arcade.svg">
-          <p>Arcade</p>
-          <p id="arcade-price">$9/mo</p>
-          <p class="discount-message">2 months free</p>
+          <div>
+            <p>Arcade</p>
+            <p id="arcade-price">$9/mo</p>
+            <p class="discount-message">2 months free</p>
+          </div>
         </label>
         <input type="radio" name="plan-selection" id="advanced" value="Advanced">
         <label for="advanced">
           <img src="assets/images/icon-advanced.svg">
-          <p>Advanced</p>
-          <p id="advanced-price">$12/mo</p>
-          <p class="discount-message">2 months free</p>
+          <div>
+            <p>Advanced</p>
+            <p id="advanced-price">$12/mo</p>
+            <p class="discount-message">2 months free</p>
+          </div>
         </label>
         <input type="radio" name="plan-selection" id="pro" value="Pro">
         <label for="pro">
           <img src="assets/images/icon-pro.svg" alt="">
-          <p>Pro</p>
-          <p id="pro-price">$15/mo</p>
-          <p class="discount-message">2 months free</p>
+          <div>
+            <p>Pro</p>
+            <p id="pro-price">$15/mo</p>
+            <p class="discount-message">2 months free</p>
+          </div>
         </label>
         <div class="billing-period-selector">
           <input type="checkbox" name="billing-period" id="billing-period" />
@@ -130,7 +138,7 @@
             <h2>Online service</h2>
             <p>Access to multiplayer games</p>
           </div>
-          <p>+$1/mo</p>
+          <p id="online-service-price">+$1/mo</p>
         </label>
         <label>
           <input type="checkbox" name="larger-storage" value="Larger storage">
@@ -138,7 +146,7 @@
             <h2>Larger storage</h2>
             <p>Extra 1TB of cloud save</p>
           </div>
-          <p>+$2/mo</p>
+          <p id="larger-storage-price">+$2/mo</p>
         </label>
         <label>
           <input type="checkbox" name="customizable-profile" value="Customizable profile">
@@ -146,7 +154,7 @@
             <h2>Customizable profile</h2>
             <p>Custom theme on your profile</p>
           </div>
-          <p>+$2/mo</p>
+          <p id="customizable-profile-price">+$2/mo</p>
         </label>
       </div>
       <div class="buttons">

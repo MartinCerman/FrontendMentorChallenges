@@ -35,8 +35,8 @@ const changeTabs = (currentTabIndex, changeBy = 1) => {
   formTabContainers[currentTabIndex].classList.remove("active-tab");
   formTabContainers[currentTabIndex + changeBy].classList.add("active-tab");
   console.log(currentTabIndex);
-  // Prevents changing sidebar icon for second to last tab to last tab transition.
-  if (currentTabIndex !== formTabContainers.length - 2) {
+  // Prevents changing sidebar icon for summary tab to after confirm tab transition.
+  if (!(currentTabIndex === formTabContainers.length - 2 && changeBy > 0)) {
     sidebarIcons[currentTabIndex].classList.remove("active-tab-number");
     sidebarIcons[currentTabIndex + changeBy].classList.add("active-tab-number");
   }
@@ -87,25 +87,37 @@ const advancedPrice = document.querySelector("#advanced-price");
 const proPrice = document.querySelector("#pro-price");
 const discountMsgContainers = document.querySelectorAll(".discount-message");
 
-// Toggles discount message.
-const showDiscountMsg = (show)=>{
-  if(show){
-    discountMsgContainers.forEach((msg)=>{
+// Toggles step 2 discount messages.
+const showDiscountMsg = (show) => {
+  if (show) {
+    discountMsgContainers.forEach((msg) => {
       msg.setAttribute("style", "display: inline");
-    })
+    });
   } else {
-    discountMsgContainers.forEach((msg)=>{
+    discountMsgContainers.forEach((msg) => {
       msg.setAttribute("style", "display: none");
-    })
+    });
   }
-}
+};
+
+// Step 3 items.
+const onlineServicePrice = document.querySelector("#online-service-price");
+const largerStoragePrice = document.querySelector("#larger-storage-price");
+const customizableProfilePrice = document.querySelector(
+  "#customizable-profile-price"
+);
 
 // Updates data on billing period checkbox change.
 billingPeriodCheckbox.addEventListener("change", (e) => {
   arcadePrice.textContent = formatPrice(arcadePlanMonthly);
   advancedPrice.textContent = formatPrice(advancedPlanMonthly);
   proPrice.textContent = formatPrice(proPlanMonthly);
-
+  onlineServicePrice.textContent =
+    "+" + formatPrice(addOnsPrices["Online service"]);
+  largerStoragePrice.textContent =
+    "+" + formatPrice(addOnsPrices["Larger storage"]);
+  customizableProfilePrice.textContent =
+    "+" + formatPrice(addOnsPrices["Customizable profile"]);
   showDiscountMsg(e.target.checked);
 });
 
@@ -207,6 +219,7 @@ const constructAddOnsSummary = () => {
       itemContainer.setAttribute("id", `container${i}`);
       const addOnNameTag = document.createElement("p");
       const addOnPriceTag = document.createElement("p");
+      addOnPriceTag.classList.add("add-on-price");
 
       let addOnTotal = addOnsPrices[item.value];
       total += addOnTotal;
@@ -239,5 +252,16 @@ const updateData = () => {
   } else {
     summaryPeriod.textContent = "Monthly";
     summaryPaymentFrequency.textContent = "month";
+  }
+};
+
+// Reset checkboxes on reload to default state.
+window.onload = () => {
+  let inputs = document.querySelectorAll("input");
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].type == "checkbox") {
+      inputs[i].checked = false;
+    }
   }
 };

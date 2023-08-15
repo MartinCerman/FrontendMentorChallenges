@@ -54,6 +54,7 @@ form {
   padding: 1rem;
   background-color: var(--white);
   border-radius: 1rem;
+  box-shadow: 0 10px 30px var(--light-gray);
 }
 
 /* Sidebar Start */
@@ -191,7 +192,7 @@ fieldset p {
   width: 138px;
   /* height: 160px; */
   padding: 1rem;
-  border: solid 1px var(--cool-gray);
+  border: solid 1px var(--light-gray);
   border-radius: 0.5rem;
   cursor: pointer;
   display: flex;
@@ -200,20 +201,20 @@ fieldset p {
 }
 
 .plan-selection > label:hover {
-  border: solid var(--purplish-blue) 1px;
+  border: solid var(--marine-blue) 1px;
 }
 
 .plan-selection > label > img {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-.plan-selection > label > p:nth-child(2) {
+.plan-selection > label > div > p:nth-child(1) {
   color: var(--marine-blue);
   font-family: Ubuntu-Medium;
   margin-bottom: 0.2rem;
 }
 
-.plan-selection > label > p:nth-child(4) {
+.plan-selection > label > div > p:nth-child(3) {
   color: var(--marine-blue);
   font-size: 0.8rem;
   margin-top: 0.2rem;
@@ -222,7 +223,7 @@ fieldset p {
 
 .plan-selection input[type="radio"]:checked + label {
   background-color: var(--alabaster);
-  border: solid var(--purplish-blue) 1px;
+  border: solid var(--marine-blue) 1px;
 }
 
 .plan-selection input[type="radio"] {
@@ -389,6 +390,17 @@ label.highlight {
   border-top: 1px solid var(--light-gray);
 }
 
+#summary-plan-price {
+  font-family: Ubuntu-Bold;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.add-on-price {
+  color: var(--marine-blue);
+  font-size: 0.9rem;
+}
+
 .total {
   display: flex;
   justify-content: space-between;
@@ -397,7 +409,7 @@ label.highlight {
 
 .total > :last-child {
   color: var(--purplish-blue);
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu-Medium;
   font-size: 1.25rem;
 }
 
@@ -476,4 +488,79 @@ button[type="submit"]:hover {
 .attribution {
   position: absolute;
   bottom: 0;
+}
+
+@media screen and (max-width: 720px) {
+  form {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .sidebar-container {
+    width: 100%;
+    height: 170px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-image: url("assets/images/bg-sidebar-mobile.svg");
+    border-radius: 0;
+  }
+
+  .sidebar-container > div > :nth-child(2),
+  .sidebar-container > div > :nth-child(3) {
+    display: none;
+  }
+
+  fieldset {
+    width: auto;
+    position: relative;
+    margin: 0 1rem;
+    top: -72px;
+    left: 0;
+    background-color: var(--white);
+    border-radius: 0.6rem;
+    box-shadow: 0 10px 30px var(--light-gray);
+  }
+
+  fieldset > div:first-child {
+    margin-bottom: 1.5rem;
+  }
+
+  fieldset > div:first-child,
+  fieldset > div:nth-child(2) {
+    padding: 0 1rem;
+  }
+
+  .buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0.7rem 1rem 1.5rem 1rem;
+    box-shadow: 0 -10px 100px var(--light-gray);
+
+  }
+
+  .plan-selection {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .plan-selection > label {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .plan-selection > label > img {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
 }
