@@ -6,3 +6,5 @@ This repository contains solutions to [Frontend Mentor challenges](https://www.f
 [Live solution](https://martincerman.github.io/FrontendMentorChallenges/product-preview-card-component-main/index.html)
 3. Challenge homepage: [social-proof-section-master](https://www.frontendmentor.io/challenges/social-proof-section-6e0qTv_bA)  
 [Live solution](https://martincerman.github.io/FrontendMentorChallenges/social-proof-section-master/index.html)
+4. Challenge homepage: [multi-step-form-main](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ)  
+[Live solution](https://martincerman.github.io/FrontendMentorChallenges/multi-step-form-main/index.html)
