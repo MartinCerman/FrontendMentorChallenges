@@ -80,6 +80,35 @@ const personalDataValid = (e) => {
   return isDataValid;
 };
 
+// Step 2 items.
+const billingPeriodCheckbox = document.querySelector("#billing-period");
+const arcadePrice = document.querySelector("#arcade-price");
+const advancedPrice = document.querySelector("#advanced-price");
+const proPrice = document.querySelector("#pro-price");
+const discountMsgContainers = document.querySelectorAll(".discount-message");
+
+// Toggles discount message.
+const showDiscountMsg = (show)=>{
+  if(show){
+    discountMsgContainers.forEach((msg)=>{
+      msg.setAttribute("style", "display: inline");
+    })
+  } else {
+    discountMsgContainers.forEach((msg)=>{
+      msg.setAttribute("style", "display: none");
+    })
+  }
+}
+
+// Updates data on billing period checkbox change.
+billingPeriodCheckbox.addEventListener("change", (e) => {
+  arcadePrice.textContent = formatPrice(arcadePlanMonthly);
+  advancedPrice.textContent = formatPrice(advancedPlanMonthly);
+  proPrice.textContent = formatPrice(proPlanMonthly);
+
+  showDiscountMsg(e.target.checked);
+});
+
 // First Next Step button, validates data for text fields.
 nextStepButtons[0].addEventListener("click", (e) => {
   e.preventDefault();

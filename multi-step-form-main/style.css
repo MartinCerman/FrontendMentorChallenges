@@ -189,7 +189,7 @@ fieldset p {
 
 .plan-selection > label {
   width: 138px;
-  height: 160px;
+  /* height: 160px; */
   padding: 1rem;
   border: solid 1px var(--cool-gray);
   border-radius: 0.5rem;
@@ -204,13 +204,20 @@ fieldset p {
 }
 
 .plan-selection > label > img {
-  margin-bottom: auto;
+  margin-bottom: 2rem;
 }
 
-.plan-selection input + label > p:nth-child(2) {
+.plan-selection > label > p:nth-child(2) {
   color: var(--marine-blue);
   font-family: Ubuntu-Medium;
   margin-bottom: 0.2rem;
+}
+
+.plan-selection > label > p:nth-child(4) {
+  color: var(--marine-blue);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  display: none;
 }
 
 .plan-selection input[type="radio"]:checked + label {
