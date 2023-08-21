@@ -85,7 +85,7 @@ form {
   margin-right: 1rem;
 }
 
-.sidebar-container > div > p:nth-child(2) {
+.sidebar-container > div > h2 {
   text-transform: uppercase;
   font-size: 0.8rem;
   color: var(--light-blue);
@@ -208,13 +208,13 @@ fieldset p {
   margin-bottom: 3rem;
 }
 
-.plan-selection > label > div > p:nth-child(1) {
+.plan-selection > label > span > span:nth-child(1) {
   color: var(--marine-blue);
   font-family: Ubuntu-Medium;
   margin-bottom: 0.2rem;
 }
 
-.plan-selection > label > div > p:nth-child(3) {
+.plan-selection > label > span > span:nth-child(3) {
   color: var(--marine-blue);
   font-size: 0.8rem;
   margin-top: 0.2rem;
@@ -307,8 +307,14 @@ fieldset p {
   gap: 1rem;
 }
 
-.add-ons-container h2 {
+.add-ons-container .service-name {
   color: var(--marine-blue);
+  font-family: Ubuntu-Bold, sans-serif;
+  font-weight: 500;
+}
+
+.add-ons-container .service-text {
+  color: var(--cool-gray);
 }
 
 .add-ons-container > label {

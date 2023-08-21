@@ -33,22 +33,22 @@
 
       <div>
         <p class="active-tab-number">1</p>
-        <p>Step 1</p>
+        <h2>Step 1</h2>
         <p>Your info</p>
       </div>
       <div>
         <p>2</p>
-        <p>Step 2</p>
+        <h2>Step 2</h2>
         <p>Select plan</p>
       </div>
       <div>
         <p>3</p>
-        <p>Step 3</p>
+        <h2>Step 3</h2>
         <p>Add-ons</p>
       </div>
       <div>
         <p>4</p>
-        <p>Step 4</p>
+        <h2>Step 4</h2>
         <p>Summary</p>
       </div>
     </section>
@@ -87,33 +87,33 @@
       <div class="plan-selection">
         <input type="radio" name="plan-selection" id="arcade" value="Arcade" checked>
         <label for="arcade">
-          <img src="assets/images/icon-arcade.svg">
-          <div>
-            <p>Arcade</p>
-            <p id="arcade-price">$9/mo</p>
-            <p class="discount-message">2 months free</p>
-          </div>
+          <img src="assets/images/icon-arcade.svg" alt="orange icon">
+          <span>
+            <span>Arcade<br></span>
+            <span id="arcade-price">$9/mo</span>
+            <span class="discount-message"><br>2 months free</span>
+          </span>
         </label>
         <input type="radio" name="plan-selection" id="advanced" value="Advanced">
         <label for="advanced">
-          <img src="assets/images/icon-advanced.svg">
-          <div>
-            <p>Advanced</p>
-            <p id="advanced-price">$12/mo</p>
-            <p class="discount-message">2 months free</p>
-          </div>
+          <img src="assets/images/icon-advanced.svg" alt="red icon">
+          <span>
+            <span>Advanced<br></span>
+            <span id="advanced-price">$12/mo</span>
+            <span class="discount-message"><br>2 months free</span>
+          </span>
         </label>
         <input type="radio" name="plan-selection" id="pro" value="Pro">
         <label for="pro">
-          <img src="assets/images/icon-pro.svg" alt="">
-          <div>
-            <p>Pro</p>
-            <p id="pro-price">$15/mo</p>
-            <p class="discount-message">2 months free</p>
-          </div>
+          <img src="assets/images/icon-pro.svg" alt="blue icon">
+          <span>
+            <span>Pro<br></span>
+            <span id="pro-price">$15/mo</span>
+            <span class="discount-message"><br>2 months free</span>
+          </span>
         </label>
         <div class="billing-period-selector">
-          <input type="checkbox" name="billing-period" id="billing-period" />
+          <input type="checkbox" name="billing-period" id="billing-period">
           <label for="billing-period"></label>
           <label for="billing-period">Monthly</label>
           <label for="billing-period">Yearly</label>
@@ -134,27 +134,27 @@
       <div class="add-ons-container">
         <label>
           <input type="checkbox" name="online-service" value="Online service">
-          <div>
-            <h2>Online service</h2>
-            <p>Access to multiplayer games</p>
-          </div>
-          <p id="online-service-price">+$1/mo</p>
+          <span>
+            <span class="service-name">Online service<br></span>
+            <span class="service-text">Access to multiplayer games</span>
+          </span>
+          <span id="online-service-price">+$1/mo</span>
         </label>
         <label>
           <input type="checkbox" name="larger-storage" value="Larger storage">
-          <div>
-            <h2>Larger storage</h2>
-            <p>Extra 1TB of cloud save</p>
-          </div>
-          <p id="larger-storage-price">+$2/mo</p>
+          <span>
+            <span class="service-name">Larger storage<br></span>
+            <span class="service-text">Extra 1TB of cloud save</span>
+          </span>
+          <span id="larger-storage-price">+$2/mo</span>
         </label>
         <label>
           <input type="checkbox" name="customizable-profile" value="Customizable profile">
-          <div>
-            <h2>Customizable profile</h2>
-            <p>Custom theme on your profile</p>
-          </div>
-          <p id="customizable-profile-price">+$2/mo</p>
+          <span>
+            <span class="service-name">Customizable profile<br></span>
+            <span class="service-text">Custom theme on your profile</span>
+          </span>
+          <span id="customizable-profile-price">+$2/mo</span>
         </label>
       </div>
       <div class="buttons">
